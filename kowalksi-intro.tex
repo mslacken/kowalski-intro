@@ -81,7 +81,6 @@
 \end{columns}
 \end{frame}
 
-\section{Introducing Kowalski}
 \begin{frame}{Introducing Kowalski: A Specialized AI Assistant}
 \begin{columns}
 \column{.5\textwidth}
@@ -95,27 +94,33 @@
 \end{columns}
 \end{frame}
 
-\begin{frame}{Excurse: Vector Embeddings}
+\section{AI Tools}
+\begin{frame}{Vector Embeddings}
   \begin{block}{Definition}
   Numerical representations of data (words, texts, etc.) in a vector space
   \end{block}
+  \begin{columns}
+  \column{.7\textwidth}
   \begin{block}{Key Properties}
   \begin{itemize}
-    \item Capture semantic relationships \\(e.g., "king" – "man" + "woman" ≈ "queen").
-    \item Fixed-length (e.g., 300 dimensions for Word2Vec).
+    \item Capture semantic relationships \\(e.g. "king" – "man" + "woman" ≈ "queen").
+    \item Fixed-length
     \item Similar items cluster together in the vector space.
   \end{itemize}
   \end{block}
+  \column{.3\textwidth}
+  \includegraphics[width=\linewidth]{Word_vector_illustration}
+  \end{columns}
   \begin{block}{Example}
   \texttt{"cat" → [0.2, -0.5, 0.7], "dog" → [0.3, -0.4, 0.6]}
   \end{block}
 \end{frame}
 
-\begin{frame}{How are Embeddings Created?}
-  \begin{block}{Common Methods}
+\begin{frame}{Emedding details}
+  \begin{block}{Creation methods}
   \begin{description}
     \item[GloVe]\hfill \\ Uses global word co-occurrence statistics from a corpus.
-    \item[Word2Vec (Skip-gram/CBOW)]\hfill \\Predicts surrounding words (or target word) using shallow neural networks.
+    \item[Word2Vec]\hfill \\predicts surrounding words (or target word) using shallow neural networks.
   \end{description}
   \end{block}
   \begin{block}{Vector space search}
@@ -126,168 +131,81 @@
   \end{block}
 \end{frame}
 
-%------------------------------------------------
-% Slide 4: Kowalski's Core Idea
-%------------------------------------------------
-\begin{frame}{Kowalski's Core Idea: Contextualized Information}
-  \begin{itemize}
-    \item Enhance the LLM's ability to perform configuration tasks.
-    \item Achieve this by providing accurate information extracted directly from trusted sources (documentation).
-    \item Supplement documentation knowledge with live system information.
-  \end{itemize}
+\begin{frame}{Embedding conclusions}
+\begin{columns}
+\column{.5\textwidth}
+\begin{itemize}
+  \item Use \emph{Word2Vec} like embedding so that LLM and embedding run on Ollama
+  \item Creation embedding for documentation is computational expensive
+  \item Embeddings are available for with different OSS licenses, text lenghts and embedding dimenstions
+\end{itemize}
+\column{.5\textwidth}
+  \includegraphics[width=\linewidth]{Noimic}
+\end{columns}
 \end{frame}
 
-%------------------------------------------------
-% Slide 5: Phase 1: Documentation Ingestion
-%------------------------------------------------
-\section{Kowalski Workflow}
-\begin{frame}{Phase 1: Documentation Ingestion}
-  \begin{block}{The Starting Point: SUSE/SLE Documentation}
+
+\begin{frame}{Ollama: Local AI Powerhouse}
+\begin{itemize}
+    \item Ollams is Open-source framework for running LLMs locally
+    \item Enables execution of models like LLaMA on consumer hardware
+\end{itemize}
+
+\begin{block}{Efficiency}
+\begin{itemize}
+    \item Uses \textbf{quantization}—reduces model precision (e.g. 32-bit $\rightarrow$ 4-bit)
+    \item Smaller model size + faster inference
+    \item Minimal accuracy loss for significant performance gains
+\end{itemize}
+\end{block}
+
+\begin{columns}
+\column{.7\textwidth}
+\begin{block}{The LLaMA Foundation}
+\begin{itemize}
+    \item Meta's LLaMA was first major open weights model
+    \item Proved smaller models could compete with proper training
+\end{itemize}
+\end{block}
+\column{.1\textwidth}
+\includegraphics[width=\linewidth]{ollama.png}
+\end{columns}
+\end{frame}
+
+\section{Kowalski Implementation}
+\begin{frame}{Why Go for Kowalski?}
+\begin{block}{Python's Challenges in Production AI}
+\begin{itemize}
+    \item \textbf{Dependency Hell}  
     \begin{itemize}
-      \item Kowalski begins by processing official documentation.
-      \item This documentation is a rich source of configuration knowledge.
-      \item The goal is to make this information machine-readable and easily retrievable.
+        \item Python has a \textit{long tail}—importing one package pulls in many others which have to packaged 
+        \item Increases deployment complexity 
+        \item e.g. python-faiss is not available for the \emph{oldest} python in Tumbleweed
     \end{itemize}
-  \end{block}
-\end{frame}
+\end{itemize}
+\end{block}
 
-%------------------------------------------------
-% Slide 6: Extraction Process
-%------------------------------------------------
-\begin{frame}{Extraction Process: Identifying Key Information}
-  \begin{columns}
-    \column{0.5\textwidth}
-    \begin{block}{What is Extracted?}
-      \begin{itemize}
-        \item Mentioned files (e.g., configuration files, scripts).
-        \item Commands to be executed (e.g., installation, configuration commands).
-        \item Key parameters and values within documentation examples.
-      \end{itemize}
-    \end{block}
-    \column{0.5\textwidth}
-    \begin{block}{How is it Extracted?}
-      \begin{itemize}
-        \item Utilizing parsing techniques.
-        \item Applying Natural Language Processing (NLP) to identify relevant entities.
-        \item Defining patterns and rules to capture structured information.
-      \end{itemize}
-    \end{block}
-  \end{columns}
-\end{frame}
-
-%------------------------------------------------
-% Slide 7: Building the Knowledge Base
-%------------------------------------------------
-\begin{frame}{Building the Knowledge Base: Internal Database}
-  \begin{itemize}
-    \item Extracted files, commands, and related documentation snippets are stored.
-    \item An internal database is created to organize this structured information.
-    \item This database serves as a central repository of documentation-derived knowledge.
-  \end{itemize}
-\end{frame}
-
-%------------------------------------------------
-% Slide 8: Semantic Understanding: Creating Embeddings
-%------------------------------------------------
-\begin{frame}{Semantic Understanding: Creating Embeddings}
-  \begin{itemize}
-    \item Embeddings are created from the documentation content.
-    \item These embeddings capture the semantic meaning of the text.
-    \item This allows for searching based on concept and relevance, not just keywords.
-  \end{itemize}
-\end{frame}
-
-%------------------------------------------------
-% Slide 9: The User Interaction
-%------------------------------------------------
-\section{User Interaction}
-\begin{frame}{The User Interaction: Asking Kowalski}
-  \begin{block}{User Query}
+\begin{columns}
+\column{.6\textwidth}
+\begin{block}{Go's Advantages}
+\begin{itemize}
+    \item \textbf{Single Binary Deployment}  
     \begin{itemize}
-      \item A user poses a question to Kowalski regarding a system configuration task.
-      \item The query is the starting point for retrieving relevant information.
+        \item No dependency chains—statically linked executables  
     \end{itemize}
-  \end{block}
-\end{frame}
-
-%------------------------------------------------
-% Slide 10: Query Embedding
-%------------------------------------------------
-\begin{frame}{Query Embedding: Understanding the User's Need}
-  \begin{itemize}
-    \item The user's query is also converted into an embedding.
-    \item This puts the query into the same semantic space as the documentation embeddings.
-    \item Enables comparing the user's request to the stored knowledge.
-  \end{itemize}
-\end{frame}
-
-%------------------------------------------------
-% Slide 11: Finding Relevant Information: Vector Search
-%------------------------------------------------
-\begin{frame}{Finding Relevant Information: Vector Search with FAISS}
-  \begin{itemize}
-    \item FAISS (Facebook AI Similarity Search) is used for efficient vector similarity search.
-    \item The embedding of the user query is compared against the documentation embeddings.
-    \item The nearest (most semantically similar) help documents are identified.
-  \end{itemize}
-\end{frame}
-
-%------------------------------------------------
-% Slide 12: Enriching the Context
-%------------------------------------------------
-\begin{frame}{Enriching the Context: Adding System Specifics}
-  \begin{block}{Going Beyond Documentation}
+    \item \textbf{Compile Time Vendoring}  
     \begin{itemize}
-      \item The extracted relevant documentation snippets are a primary source of context.
-      \item Kowalski then checks if files mentioned in the documentation exist on the *actual* system.
-      \item The content of these existing system files is extracted.
+        \item Dependencies are imported at copmile time and not run time 
     \end{itemize}
-  \end{block}
+\end{itemize}
+\end{block}
+\column{.2\textwidth}
+\includegraphics[width=\linewidth]{gopher}
+\end{columns}
 \end{frame}
 
-%------------------------------------------------
-% Slide 13: The Enriched Context for the LLM
-%------------------------------------------------
-\begin{frame}{The Enriched Context for the LLM}
-  \begin{itemize}
-    \item The LLM receives a context that includes:
-    \item Relevant information from the documentation (extracted text).
-    \item Information about specific files found on the user's system that were mentioned in the documentation.
-    \item This provides the LLM with a much more accurate picture of the user's situation.
-  \end{itemize}
+\begin{frame}{How does Kowalski work}
+\includegraphics[width=\linewidth]{Flow.drawio}
 \end{frame}
 
-%------------------------------------------------
-% Slide 14: How it Works Together: The Kowalski Workflow
-%------------------------------------------------
-\begin{frame}{How it Works Together: The Kowalski Workflow}
-  \begin{enumerate}
-    \item Documentation Ingestion \& Extraction
-    \item Database Creation \& Embedding Generation
-    \item User Query
-    \item Query Embedding
-    \item Vector Search (FAISS)
-    \item Retrieve Relevant Docs
-    \item Check for Mentioned System Files
-    \item Extract System File Content
-    \item Provide Enriched Context to LLM
-    \item LLM Generates Configuration Advice
-  \end{enumerate}
-\end{frame}
-
-%------------------------------------------------
-% Slide 15: Benefits of Using Kowalski
-%------------------------------------------------
-\section{Benefits}
-\begin{frame}{Benefits of Using Kowalski}
-  \begin{itemize}
-    \item **Accuracy:** LLM responses are grounded in trusted documentation.
-    \item **Relevance:** Context is tailored to the specific documentation and the user's system.
-    \item **Efficiency:** Users get direct answers for configuration tasks.
-    \item **Reduced Hallucination:** Providing specific context minimizes the risk of incorrect information.
-    \item **Improved LLM Performance:** LLMs can provide more helpful and actionable configuration steps.
-  \end{itemize}
-\end{frame}
-
-% End of document
 \end{document}

@@ -1,0 +1,84 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0" version="27.0.5">
+  <diagram name="Page-1" id="kQKjdgFfvHiph6wUranB">
+    <mxGraphModel dx="786" dy="1156" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="NurUslL9M-7hxnl293aG-28" value="Ollama" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="370" y="260" width="200" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="NurUslL9M-7hxnl293aG-30" value="LLM" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="NurUslL9M-7hxnl293aG-28">
+          <mxGeometry x="30" y="130" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NurUslL9M-7hxnl293aG-31" value="embedding modell" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="NurUslL9M-7hxnl293aG-28">
+          <mxGeometry x="30" y="30" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NurUslL9M-7hxnl293aG-29" value="&lt;div&gt;Kowalski&lt;/div&gt;" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="260" width="200" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="NurUslL9M-7hxnl293aG-32" value="User ask question" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="NurUslL9M-7hxnl293aG-29">
+          <mxGeometry x="20" y="30" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="NurUslL9M-7hxnl293aG-42" value="retrieve help documents from DB" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="NurUslL9M-7hxnl293aG-29">
+          <mxGeometry x="20" y="80" width="170" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="NurUslL9M-7hxnl293aG-43" value="get files and state based on help documents" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="NurUslL9M-7hxnl293aG-29">
+          <mxGeometry x="20" y="140" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="NurUslL9M-7hxnl293aG-44" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.465;exitY=0.95;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="NurUslL9M-7hxnl293aG-29" source="NurUslL9M-7hxnl293aG-42" target="NurUslL9M-7hxnl293aG-43">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="100" y="130" as="sourcePoint" />
+            <mxPoint x="350" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NurUslL9M-7hxnl293aG-48" value="post process answer" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="NurUslL9M-7hxnl293aG-29">
+          <mxGeometry x="20" y="190" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="NurUslL9M-7hxnl293aG-38" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=-0.025;entryY=0.367;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="NurUslL9M-7hxnl293aG-32" target="NurUslL9M-7hxnl293aG-31">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="360" y="620" as="sourcePoint" />
+            <mxPoint x="410" y="570" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NurUslL9M-7hxnl293aG-39" value="question" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="NurUslL9M-7hxnl293aG-38">
+          <mxGeometry x="-0.0002" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NurUslL9M-7hxnl293aG-40" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="NurUslL9M-7hxnl293aG-31" target="NurUslL9M-7hxnl293aG-42">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="360" y="620" as="sourcePoint" />
+            <mxPoint x="410" y="570" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NurUslL9M-7hxnl293aG-41" value="embedding vector" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="NurUslL9M-7hxnl293aG-40">
+          <mxGeometry x="-0.0248" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NurUslL9M-7hxnl293aG-45" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="NurUslL9M-7hxnl293aG-43" target="NurUslL9M-7hxnl293aG-30">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="360" y="620" as="sourcePoint" />
+            <mxPoint x="410" y="570" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NurUslL9M-7hxnl293aG-47" value="Question with context" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="NurUslL9M-7hxnl293aG-45">
+          <mxGeometry x="0.125" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NurUslL9M-7hxnl293aG-50" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="NurUslL9M-7hxnl293aG-30" target="NurUslL9M-7hxnl293aG-48">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="360" y="620" as="sourcePoint" />
+            <mxPoint x="410" y="570" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NurUslL9M-7hxnl293aG-51" value="Answer from LLM" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="NurUslL9M-7hxnl293aG-50">
+          <mxGeometry x="0.0191" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

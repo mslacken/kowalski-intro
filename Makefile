@@ -13,12 +13,17 @@ documents: $(DOCUMENTS)
 
 $(BUILDDIR)/%.pdf: %.tex | $(BUILDDIR)
 	xelatex -interaction=nonstopmode -output-directory=$(BUILDDIR) $<
+	echo "# Kowaslki introdution slides" > README.md
 
 screenshots:	$(SCREENSHOTS)
 
 $(OUTPUT_IMAGESDIR)/%-screenshot: $(BUILDDIR)/%.pdf
-	gs -dBATCH -dNOPAUSE -dSAFER -r600 -sDEVICE=pngalpha -sOutputFile=$(OUTPUT_IMAGESDIR)/$*-%d.png $<
+	rm -fv $(OUTPUT_IMAGESDIR)/*.png
+	gs -dBATCH -dNOPAUSE -dSAFER -r600 -sDEVICE=pngalpha -sOutputFile=$(OUTPUT_IMAGESDIR)/$*-%02d.png $<
 	touch $@
+	@for im in build/images/*.png; do \
+		echo "!\[Screenshot\]($$im)" >> README.md; \
+	done
 
 $(BUILDDIR):
 	mkdir -p $(BUILDDIR) $(OUTPUT_IMAGESDIR)
