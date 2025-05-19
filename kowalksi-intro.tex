@@ -33,8 +33,8 @@
   \begin{block}{Current state}
     \begin{itemize}
       \item Large Language Models (LLMs) are powerful for general tasks.
-      \item LLMs are allready used for system configuration tasks
-      \item Halucinations and wrong tools likely to be presented
+      \item LLMs are already used for system configuration tasks
+      \item Hallucinations and wrong tools likely to be presented
     \end{itemize}
   \end{block}
 \column{0.5\textwidth}
@@ -116,7 +116,7 @@
   \end{block}
 \end{frame}
 
-\begin{frame}{Emedding details}
+\begin{frame}{Embedding details}
   \begin{block}{Creation methods}
   \begin{description}
     \item[GloVe]\hfill \\ Uses global word co-occurrence statistics from a corpus.
@@ -125,7 +125,7 @@
   \end{block}
   \begin{block}{Vector space search}
   \begin{itemize}
-    \item Searching nearest neighbors in high dimesional vector space isn't  trivial
+    \item Searching nearest neighbors in high dimensional vector space isn't  trivial
     \item Facebook created \texttt{faiss} library which does this job
   \end{itemize}
   \end{block}
@@ -137,7 +137,7 @@
 \begin{itemize}
   \item Use \emph{Word2Vec} like embedding so that LLM and embedding run on Ollama
   \item Creation embedding for documentation is computational expensive
-  \item Embeddings are available for with different OSS licenses, text lenghts and embedding dimenstions
+  \item Embeddings are available for with different OSS licenses, text lengths and embedding dimensions
 \end{itemize}
 \column{.5\textwidth}
   \includegraphics[width=\linewidth]{Noimic}
@@ -195,7 +195,7 @@
     \end{itemize}
     \item \textbf{Compile Time Vendoring}  
     \begin{itemize}
-        \item Dependencies are imported at copmile time and not run time 
+        \item Dependencies are imported at compile time and not run time 
     \end{itemize}
 \end{itemize}
 \end{block}
@@ -211,7 +211,7 @@
 \begin{frame}{Advantages of separate Ollama instance}
 \begin{block}{Pros}
 \begin{itemize}
-  \item GPU accelarted Ollama versions can be used
+  \item GPU accelerated Ollama versions can be used
   \item Ollama can run as micro service
   \item Ollama can run on seperate server
   \item Embedding and LLMs are interchangeable
@@ -219,7 +219,7 @@
 \end{block}
 \begin{block}{Contras}
 \begin{itemize}
-  \item Requires seperate Ollama installation
+  \item Requires separate Ollama installation
 \end{itemize}
 \end{block}
 \end{frame}
@@ -230,14 +230,39 @@
 
 \begin{frame}{Help wanted!}
 \href{https://github.com/mslacken/kowalski}{https://github.com/mslacken/kowalski}
-\begin{block}{EVRYONE}
+\begin{block}{EVERYONE}
 \begin{itemize}
   \item Requests for Kowalksi under \texttt{/evalutations/foo.yaml}
   \item Just needs a name and a prompt!
 \end{itemize}
 \end{block}
-\begin{block}{Ebery other aspect}
+\begin{block}{Every other aspect}
 Also help needed!
+\end{block}
+\end{frame}
+
+\begin{frame}{Availability}
+\begin{block}{Source}
+\begin{itemize}
+  \item Install \texttt{python-fais-devel} for {science:machinelearning}
+  \item \texttt{go mod vendor}
+  \item \texttt{go build kowalski.go}
+\end{itemize}
+\begin{columns}
+\column{.5\textwidth}
+\begin{itemize}
+  \item Get documentation and embeddings
+\end{itemize}
+\column{.5\textwidth}
+\begin{itemize}
+  \item Clone documentation repo
+  \item Create embeddings with \texttt{kowalski database add \dots}
+  \item Grab a coffee
+\end{itemize}
+\end{columns}
+\end{block}
+\begin{block}{RPM package}
+  Get package with embeddings from \texttt{science:machinelearning}
 \end{block}
 \end{frame}
 \end{document}
