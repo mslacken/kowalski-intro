@@ -59,7 +59,7 @@
 \begin{columns}
 \column{.5\textwidth}
 \begin{itemize}
-  \item LLMs are created by training text completion on scraped sources
+  \item LLMs are created by training text completions on scraped sources
   \item LLMs don't have any context
 \end{itemize}
 \column{.5\textwidth}
@@ -263,6 +263,41 @@ Also help needed!
 \end{block}
 \begin{block}{RPM package}
   Get package with embeddings from \texttt{science:machinelearning}
+  \hfill
 \end{block}
+\end{frame}
+\begin{frame}{Packaging caveats}
+\begin{block}{LLMs}
+  \begin{itemize}
+    \item LLMs with OSS licenses are available
+    \item Are they binary blobs?
+    \item There is no realistic chance to build them on your own
+    \item You can finetune them
+  \end{itemize}
+\end{block}
+\begin{columns}
+\column{.7\textwidth}
+\begin{block}{Embedding creation}
+  \begin{itemize}
+  \item Creating embedding is compute expensive for the complete documentation
+  \item Is done with a \texttt{github} runner
+  \begin{itemize}
+    \item Embedding model can downloaded online
+    \item Microsoft pays the compute bill
+  \end{itemize}
+  \end{itemize}
+\end{block}
+\column{.3\textwidth}
+\includegraphics[width=.8\linewidth]{github}
+\end{columns}
+\end{frame}
+\begin{frame}[fragile]
+\frametitle{Kowalski}
+\begin{columns}
+\column{0.5\textwidth}
+Thank your, for you attention!
+\column{0.5\textwidth}
+\includegraphics[width=.8\linewidth]{vector-chameleon-213x300}
+\end{columns}
 \end{frame}
 \end{document}
