@@ -13,7 +13,7 @@
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
 
 \title{Kowalski - Your Helpful \\AI Assistant}
-\author{Christian Goll <\texttt{cgoll@suse.com}>}
+\author{Christian Goll <\texttt{cgoll@suse.com}>\\\texttt{github.com/mslacken/kowalski}}
 \date{\today}
 \usetheme{suse}
 
@@ -135,9 +135,9 @@
 \begin{columns}
 \column{.5\textwidth}
 \begin{itemize}
-  \item Use \emph{Word2Vec} like embedding so that LLM and embedding run on Ollama
+  \item Use \emph{Word2Vec} like embedding so that LLM and embedding can run on Ollama
   \item Creation embedding for documentation is computational expensive
-  \item Embeddings are available for with different OSS licenses, text lengths and embedding dimensions
+  \item Embeddings are available with different OSS licenses, text lengths and embedding dimensions
 \end{itemize}
 \column{.5\textwidth}
   \includegraphics[width=\linewidth]{Noimic}
@@ -147,7 +147,7 @@
 
 \begin{frame}{Ollama: Local AI Powerhouse}
 \begin{itemize}
-    \item Ollams is Open-source framework for running LLMs locally
+    \item Ollama is an Open-source framework for running LLMs locally
     \item Enables execution of models like LLaMA on consumer hardware
 \end{itemize}
 
@@ -178,9 +178,9 @@
 \begin{itemize}
     \item \textbf{Dependency Hell}  
     \begin{itemize}
-        \item Python has a \textit{long tail}—importing one package pulls in many others which have to packaged 
+        \item Python has a \textit{long tail}—importing one package pulls in many others which have to be packaged 
         \item Increases deployment complexity 
-        \item e.g. python-faiss is not available for the \emph{oldest} python in Tumbleweed
+        \item E.g. python-faiss is not available for the \emph{oldest} python in Tumbleweed
     \end{itemize}
 \end{itemize}
 \end{block}
